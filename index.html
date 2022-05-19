@@ -1,0 +1,83 @@
+<meta charset="utf-8">
+<style>
+
+	table {
+
+		font-family: sans-serif;
+		border-collapse: collapse;
+		table-layout: fixed;
+		
+	}
+
+	td,th {
+
+		border: 1px solid #dddddd;
+		text-align: center;
+		padding: 8px;
+		white-space:nowrap;
+		text-align: center;
+	}
+
+</style>
+
+<input id="target" style="width: 20vw;"></input>&nbsp&nbsp<button onclick="sendGET()">SEARCH</button>
+
+<br><br>
+
+<div id="rq"></div>
+
+<script>
+
+	Array.prototype.transform = function(keys){ // foo(
+	let content = "<style>table{font-family:arial,sans-serif;border-collapse:collapse;}td,th{border:1px solid #dddddd;text-align:left;padding:8px;white-space:pre}</style>"
+	content += "<table>"
+	for ( let x of this ){
+	  content += "<tr>"
+	    for ( let v of keys )
+	      if( typeValue(x[v]) == "value" )
+	        content += `<td>${x[v]}</td>`
+	      else if( typeValue(x[v]) == "array"  ){
+	        let reg = ( x => x.map( v => `<td>${v}</td>`).join("") )(x[v])
+	        let border = `border-collapse:separate;border-spacing:13px 0;margin-left:-12px;`
+	        content += `<td style="border:none"><table style="${border}">${reg}</table></td>`
+	      }
+	  content += "</tr>"
+	}
+	content += "</table>"
+	return content
+	}
+	
+	function sendGET(){
+
+		let v = document.getElementById("target").value
+
+		if( v == "" )
+			return 0
+
+		var xhr = new XMLHttpRequest()
+		xhr.onload = function() {
+		
+			if (xhr.readyState == 4 && xhr.status === 200) {
+
+				let obj = JSON.parse(xhr.response)
+
+				document.getElementById("rq").innerHTML = obj.transform(["name","folder","reg"])
+
+			}
+		}
+		xhr.open( "GET" , v )
+		xhr.send()
+
+	}
+
+	function typeValue(x){
+
+		if( Array.isArray(x) )
+		return "array"
+		else if ( typeof x == "object" && x != null )
+		return "object"
+		else
+		return "value"
+	}
+
+</script>
