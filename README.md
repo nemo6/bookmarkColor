@@ -2,7 +2,7 @@
 
 ## Installation
 
-Execute cette commande de le dossier où se trouve `app.js` et `dropFileHere.bat`
+Exécute cette commande de le dossier où se trouve `app.js` et `dropFileHere.bat`
 
     npm install express lodash
 
