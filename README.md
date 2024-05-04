@@ -8,8 +8,8 @@ Exécute cette commande de le dossier où se trouve `app.js` et `dropFileHere.ba
 
 ## Screenshot
 
-![](https://github.com/nemo6/bookmarkColor/blob/main/c3.png)
+![](https://github.com/nemo6/bookmarkColor/blob/main/img/c3.png)
 
-![](https://github.com/nemo6/bookmarkColor/blob/main/c1.png)
+![](https://github.com/nemo6/bookmarkColor/blob/main/img/c1.png)
 
-![](https://github.com/nemo6/bookmarkColor/blob/main/c2.png)
+![](https://github.com/nemo6/bookmarkColor/blob/main/img/c2.png)
